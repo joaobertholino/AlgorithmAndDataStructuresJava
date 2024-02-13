@@ -2,6 +2,8 @@ package com.joaobertholino.vector;
 
 import java.util.Arrays;
 
+// TODO: https://youtu.be/HwWrry48GII?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
+
 /**
  * Declarando uma classe Vector onde a cada instancia, por meio de um construtor, cria
  * um novo vetor de tamanho referente ao valor passado como argumento
@@ -58,14 +60,50 @@ public class Vector {
   }
 
   /**
-   * Declarando um getter que retorna o valor da prop que indica o tamanho do array
+   * Declarando um getter que retorna o valor da prop que indica o tamanho do array.
    */
   public int getSize() {
     return size;
   }
 
   /**
-   * Sobreescrevendo o método toString fazendo com que ele retorne o array por completo
+   * Declarando método que retorna um elemento especifico do array com base no index passado como argumento, validando
+   * esse valor passado por meio de uma condicional, lançando uma exceção caso o index passado seja invalido.
+   */
+  public String getElement(int index) throws Exception{
+    if (!(index >= 0 && index < this.size)){
+      throw new IllegalArgumentException("Index invalido!");
+    }
+    return this.elements[index];
+  }
+
+  /**
+   * Declarando método que verifica se o elemento passado como argumento existe no array.
+   * <p>
+   * Caso exista, ira retornar o indice desse elemento, caso contrario, retorna -1.
+   */
+  public int contains(String element){
+    for (int i = 0; i < this.size; i++) {
+      if (this.elements[i].equals(element)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  /**
+   * Declarando método que recebe um elemento e um inteiro como indice como argumento, adicionando esse elemento na
+   * posição indicada pelo indice passado.
+   */
+  public void addElement(String element, int index) throws Exception{
+    if (this.elements[index] != null){
+      throw new IllegalArgumentException("Index já preenchido!");
+    }
+    this.elements[index] = element;
+  }
+
+  /**
+   * Sobreescrevendo o método toString fazendo com que ele retorne o array por completo.
    */
   @Override
   public String toString() {
