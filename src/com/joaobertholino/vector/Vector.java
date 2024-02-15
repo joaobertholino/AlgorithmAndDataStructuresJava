@@ -2,8 +2,6 @@ package com.joaobertholino.vector;
 
 import java.util.Arrays;
 
-// TODO: https://youtu.be/HwWrry48GII?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
-
 /**
  * Declarando uma classe Vector onde a cada instancia, por meio de um construtor, cria
  * um novo vetor de tamanho referente ao valor passado como argumento
@@ -22,9 +20,9 @@ public class Vector {
    * igual a {@code null}, atribuindo o valor passado como argumento a essa
    * posição.
    */
-  public void toAddMethodOne(String element){
+  public void toAddMethodOne(String element) {
     for (int i = 0; i < this.elements.length; i++) {
-      if (this.elements[i] == null){
+      if (this.elements[i] == null) {
         this.elements[i] = element;
         break;
       }
@@ -38,7 +36,7 @@ public class Vector {
    * Caso o size seja igual ou maior que o tamanho do array, sera lançado uma exceção.
    */
   public void toAddMethodTwo(String element) throws Exception {
-    if (this.size < this.elements.length){
+    if (this.size < this.elements.length) {
       this.elements[this.size] = element;
       this.size++;
     } else {
@@ -51,7 +49,7 @@ public class Vector {
    * e não lanaçando uma exceção.
    */
   public boolean toAddMethodThree(String element) {
-    if (this.size < this.elements.length){
+    if (this.size < this.elements.length) {
       this.elements[this.size] = element;
       this.size++;
       return true;
@@ -70,8 +68,8 @@ public class Vector {
    * Declarando método que retorna um elemento especifico do array com base no index passado como argumento, validando
    * esse valor passado por meio de uma condicional, lançando uma exceção caso o index passado seja invalido.
    */
-  public String getElement(int index) throws Exception{
-    if (!(index >= 0 && index < this.size)){
+  public String getElement(int index) throws Exception {
+    if (!(index >= 0 && index < this.size)) {
       throw new IllegalArgumentException("Index invalido!");
     }
     return this.elements[index];
@@ -82,7 +80,7 @@ public class Vector {
    * <p>
    * Caso exista, ira retornar o indice desse elemento, caso contrario, retorna -1.
    */
-  public int contains(String element){
+  public int contains(String element) {
     for (int i = 0; i < this.size; i++) {
       if (this.elements[i].equals(element)) {
         return i;
@@ -92,14 +90,76 @@ public class Vector {
   }
 
   /**
-   * Declarando método que recebe um elemento e um inteiro como indice como argumento, adicionando esse elemento na
+   * Declarando método que recebe um elemento e um indice inteiro como argumento, adicionando esse elemento na
    * posição indicada pelo indice passado.
    */
-  public void addElement(String element, int index) throws Exception{
-    if (this.elements[index] != null){
+  public void toAddMethodFour(String element, int index) throws Exception {
+    if (this.elements[index] != null) {
       throw new IllegalArgumentException("Index já preenchido!");
     }
     this.elements[index] = element;
+  }
+
+  /**
+   * Declarando método que recebe um elemento e um indice inteiro como argumento, adicionando esse elemento na
+   * posição indicada pelo inteiro passado.
+   */
+  public void toAddMethodFive(String element, int index) throws IllegalArgumentException {
+//    Verificando se o indice passado é valido.
+    if (!(index >= 0 && index < this.size)) {
+      throw new IllegalArgumentException("Index invalido!");
+    }
+//    Movendo os elementos uma posição a frente da sua atual até que seja possivel a inserção do novo elemento.
+    for (int i = this.size - 1; i >= index; i--) {
+      this.elements[i + 1] = this.elements[i];
+    }
+//    Inserindo o novo elemento na posição passada.
+    this.elements[index] = element;
+//    Incrementando o size em mais um (+1).
+    this.size++;
+  }
+
+  /**
+   * Declarando método privado que se o {@code this.size} for igual a {@code this.elements.length}, cria um novo
+   * vetor de tamanho maior e com os mesmos elementos do vetor original.
+   * <p>
+   * Sendo esse método utilizado apenas internamente a classe {@code Vector}.
+   */
+  private void resize() {
+    if (this.size == this.elements.length) {
+      String[] newElements = new String[this.elements.length * 2 + 1];
+      for (int i = 0; i < this.size; i++) {
+        newElements[i] = this.elements[i];
+      }
+      this.elements = newElements;
+    }
+  }
+
+  /**
+   * Declarando método que redimenciona o array a medida que novos elementos vão sendo adicinados.
+   */
+  public void toAddMethodSix(String element, int index) throws Exception {
+    this.resize();
+    if (this.elements[index] != null) {
+      throw new IllegalArgumentException("Index já preenchido!");
+    }
+    this.elements[index] = element;
+    this.size++;
+  }
+
+  /**
+   * Declarando método que remove um elemento com base no index passado e reorganiza o array.
+   */
+  public void removeElement(int index) throws IllegalArgumentException {
+    if (!(index >= 0 && index < this.size)) {
+      throw new IllegalArgumentException("Index invalido!");
+    }
+
+    this.elements[index] = null;
+    for (int i = index; i < this.size; i++) {
+      this.elements[i] = this.elements[i + 1];
+    }
+    this.size--;
   }
 
   /**
