@@ -1,6 +1,5 @@
 package com.joaobertholino.vector;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -12,20 +11,13 @@ public class VectorGenerics<T> {
   private int size;
 
   /**
-   * Declarando um construtor fazendo o casting de {@code Object} para o tipo generics {@code T}.
+   * Declarando um construtor que faz o casting de {@code Object} para o tipo generics {@code T}.
    */
   public VectorGenerics(int capacity) {
+    if (capacity < 0) {
+      throw new IllegalArgumentException(STR."Capacidade invalida!\{capacity}");
+    }
     this.elements = (T[]) new Object[capacity];
-    this.size = 0;
-  }
-
-  /**
-   * Declarando um construtor utilizando o {@code reflection} passando o tipo do dado como argumento.
-   * <p>
-   * Sintaxe para o argumento {@code classType} => {@code nameOfType.class}
-   */
-  public VectorGenerics(int capacity, Class<T> classType) {
-    this.elements = (T[]) Array.newInstance(classType, capacity);
     this.size = 0;
   }
 

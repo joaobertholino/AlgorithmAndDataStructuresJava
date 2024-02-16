@@ -1,9 +1,11 @@
 package com.joaobertholino.tests;
 
-// TODO: https://youtu.be/8gAyHJKugGw?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
+// TODO: https://youtu.be/J3XJoCUeImg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
 import com.joaobertholino.vector.Vector;
 import com.joaobertholino.vector.VectorGenerics;
 import com.joaobertholino.vector.VectorObject;
+
+import java.util.ArrayList;
 
 public class AppOne {
   public static void main(String[] args) throws Exception {
@@ -61,8 +63,37 @@ public class AppOne {
     myPrimaryVectorGenerics.toAddMethodSix("Elemento um!", 0);
     myPrimaryVectorGenerics.toAddMethodSix("Elemento dois!", 1);
 
-    VectorGenerics<Integer> mySecondaryVectorGenerics = new VectorGenerics<>(3, int.class);
-    mySecondaryVectorGenerics.toAddMethodSix(21, 0);
-    mySecondaryVectorGenerics.toAddMethodSix(17, 1);
+//    Class ArrayList
+    ArrayList<String> myPrimaryArrayList = new ArrayList<>();
+
+//    Adiciona um elemento no final do array e retorna true caso tenha adcionado com sucesso.
+    myPrimaryArrayList.add("A");
+    myPrimaryArrayList.add("C");
+    myPrimaryArrayList.add("D");
+    myPrimaryArrayList.add("E");
+    myPrimaryArrayList.add("F");
+
+//    Adiciona um elemento no indice passado como argumento e retorna void.
+    myPrimaryArrayList.add(1, "B");
+
+//    Verifica se um elemento existe no array retornando um boolean.
+    boolean searchArrayList = myPrimaryArrayList.contains("C");
+
+//    Retorna o indice de um elememto específico.
+    int searchIndexOf = myPrimaryArrayList.indexOf("B");
+
+//    Retorna um elemento do array de acordo com o indice passado, caso o indice seja invalido, sera lançada uma exceção.
+    String getElement = myPrimaryArrayList.get(1);
+
+//    Remove um elemento do array com base no indice passado ou passando o elemento como argumento.
+//    Se removido com base no indice passado como argumento, retorna o elemento removido.
+    String removeElementIndex = myPrimaryArrayList.remove(2);
+
+//    Se removido passando o elemento como argumento, retorna um boolean.
+    boolean removeElement = myPrimaryArrayList.remove("B");
+
+//    Sobrescreve um elemento do array com base em um indice passado como argumento, retornando o elemento substituido.
+    String subscribeElement = myPrimaryArrayList.set(3, "Z");
+
   }
 }
