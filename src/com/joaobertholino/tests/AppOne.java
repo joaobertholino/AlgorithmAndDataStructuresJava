@@ -1,8 +1,14 @@
-package com.joaobertholino.vector;
+package com.joaobertholino.tests;
 
-// TODO: Continuar da aula 9 => https://youtu.be/_nZvr7-njEU?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
-public class App {
+// TODO: https://youtu.be/8gAyHJKugGw?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
+
+import com.joaobertholino.vector.Vector;
+import com.joaobertholino.vector.VectorGenerics;
+import com.joaobertholino.vector.VectorObject;
+
+public class AppOne {
   public static void main(String[] args) throws Exception {
+//    Class Vector
     Vector myPrimaryVector = new Vector(2);
     myPrimaryVector.toAddMethodOne("Elemento um!");
     myPrimaryVector.toAddMethodOne("Elemento dois!");
@@ -39,8 +45,25 @@ public class App {
     mySeventhVector.toAddMethodSix("Elemento dois!", 1);
     mySeventhVector.toAddMethodSix("Elemento tres!", 2);
     mySeventhVector.toAddMethodSix("Elemento quatro!", 3);
-    System.out.println(mySeventhVector.toString());
-    mySeventhVector.removeElement(1);
-    System.out.println(mySeventhVector.toString());
+    final int search = mySeventhVector.contains("Elemento dois!");
+    mySeventhVector.removeElement(search);
+
+//    Class VectorObject
+    VectorObject myPrimaryVectorObject = new VectorObject(3);
+    myPrimaryVectorObject.toAddMethodSix("Elemento um!", 0);
+    myPrimaryVectorObject.toAddMethodSix("Elemento dois!", 1);
+
+    VectorObject mySecondaryVectorObject = new VectorObject(3);
+    mySecondaryVectorObject.toAddMethodSix(21, 0);
+    mySecondaryVectorObject.toAddMethodSix(17, 1);
+
+//    Class VectorGenerics
+    VectorGenerics<String> myPrimaryVectorGenerics = new VectorGenerics<>(3);
+    myPrimaryVectorGenerics.toAddMethodSix("Elemento um!", 0);
+    myPrimaryVectorGenerics.toAddMethodSix("Elemento dois!", 1);
+
+    VectorGenerics<Integer> mySecondaryVectorGenerics = new VectorGenerics<>(3, int.class);
+    mySecondaryVectorGenerics.toAddMethodSix(21, 0);
+    mySecondaryVectorGenerics.toAddMethodSix(17, 1);
   }
 }
