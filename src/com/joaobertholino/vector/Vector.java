@@ -128,9 +128,7 @@ public class Vector {
   private void resize() {
     if (this.size == this.elements.length) {
       String[] newElements = new String[this.elements.length * 2 + 1];
-      for (int i = 0; i < this.size; i++) {
-        newElements[i] = this.elements[i];
-      }
+      System.arraycopy(this.elements, 0, newElements, 0, this.size);
       this.elements = newElements;
     }
   }
@@ -151,7 +149,7 @@ public class Vector {
    * Declarando método que remove um elemento com base no index passado e reorganiza o array.
    */
   public void removeElement(int index) throws IllegalArgumentException {
-    if (!(index >= 0 && index < this.size)) {
+    if (index < 0 && index > this.size) {
       throw new IllegalArgumentException("Index invalido!");
     }
 

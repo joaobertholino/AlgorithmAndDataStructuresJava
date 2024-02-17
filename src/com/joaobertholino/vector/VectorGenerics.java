@@ -89,9 +89,7 @@ public class VectorGenerics<T> {
   private void resize() {
     if (this.size == this.elements.length) {
       T[] newElements = (T[]) new Object[this.elements.length * 2 + 1];
-      for (int i = 0; i < this.size; i++) {
-        newElements[i] = this.elements[i];
-      }
+      System.arraycopy(this.elements, 0, newElements, 0, this.size);
       this.elements = newElements;
     }
   }
@@ -106,7 +104,7 @@ public class VectorGenerics<T> {
   }
 
   public void removeElement(int index) throws IllegalArgumentException {
-    if (!(index >= 0 && index < this.size)) {
+    if (index < 0 && index > this.size) {
       throw new IllegalArgumentException("Index invalido!");
     }
 

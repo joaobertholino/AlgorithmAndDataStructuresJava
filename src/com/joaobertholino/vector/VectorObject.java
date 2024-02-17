@@ -83,9 +83,7 @@ public class VectorObject {
   private void resize() {
     if (this.size == this.elements.length) {
       Object[] newElements = new Object[this.elements.length * 2 + 1];
-      for (int i = 0; i < this.size; i++) {
-        newElements[i] = this.elements[i];
-      }
+      System.arraycopy(this.elements, 0, newElements, 0, this.size);
       this.elements = newElements;
     }
   }
