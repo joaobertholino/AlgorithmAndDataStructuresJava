@@ -106,7 +106,7 @@ public class VectorGenerics<T> {
   }
 
   public void removeElement(int index) throws IllegalArgumentException {
-    if (!(index >= 0 && index < this.size)) {
+    if (index < 0 && index > this.size) {
       throw new IllegalArgumentException("Index invalido!");
     }
 

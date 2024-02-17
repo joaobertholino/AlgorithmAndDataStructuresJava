@@ -1,6 +1,5 @@
 package com.joaobertholino.tests;
 
-// TODO: https://youtu.be/J3XJoCUeImg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi
 import com.joaobertholino.vector.Vector;
 import com.joaobertholino.vector.VectorGenerics;
 import com.joaobertholino.vector.VectorObject;
@@ -13,7 +12,6 @@ public class AppOne {
     Vector myPrimaryVector = new Vector(2);
     myPrimaryVector.toAddMethodOne("Elemento um!");
     myPrimaryVector.toAddMethodOne("Elemento dois!");
-    myPrimaryVector.toAddMethodOne("Elemento tres!");
 
     Vector mySecondaryVector = new Vector(2);
     mySecondaryVector.toAddMethodTwo("Elemento um!");

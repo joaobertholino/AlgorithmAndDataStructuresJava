@@ -151,7 +151,7 @@ public class Vector {
    * Declarando método que remove um elemento com base no index passado e reorganiza o array.
    */
   public void removeElement(int index) throws IllegalArgumentException {
-    if (!(index >= 0 && index < this.size)) {
+    if (index < 0 && index > this.size) {
       throw new IllegalArgumentException("Index invalido!");
     }
 
