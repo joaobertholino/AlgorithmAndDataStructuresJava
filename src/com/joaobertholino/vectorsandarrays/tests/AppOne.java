@@ -1,8 +1,8 @@
-package com.joaobertholino.tests;
+package com.joaobertholino.vectorsandarrays.tests;
 
-import com.joaobertholino.vector.Vector;
-import com.joaobertholino.vector.VectorGenerics;
-import com.joaobertholino.vector.VectorObject;
+import com.joaobertholino.vectorsandarrays.vector.Vector;
+import com.joaobertholino.vectorsandarrays.vector.VectorGenerics;
+import com.joaobertholino.vectorsandarrays.vector.VectorObject;
 
 import java.util.ArrayList;
 
@@ -92,6 +92,5 @@ public class AppOne {
 
 //    Sobrescreve um elemento do array com base em um indice passado como argumento, retornando o elemento substituido.
     String subscribeElement = myPrimaryArrayList.set(3, "Z");
-
   }
 }

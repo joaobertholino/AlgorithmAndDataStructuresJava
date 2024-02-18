@@ -1,4 +1,4 @@
-package com.joaobertholino.exercises.Vector;
+package com.joaobertholino.vectorsandarrays.exercises.Vector;
 
 import java.util.Arrays;
 

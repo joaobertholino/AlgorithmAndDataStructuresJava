@@ -1,27 +1,21 @@
-package com.joaobertholino.vector;
+package com.joaobertholino.vectorsandarrays.vector;
 
 import java.util.Arrays;
 
 /**
- * Declarando um classe que instancia um vetor cujo o mesmo terá seu tipo dinamicamente inferido por meio do
- * operador {@code Diamond}.
+ * Declarando uma classe que instancia um vetor do tipo {@code Object}, sendo possivel a declaração de vetores de
+ * qualquer tipo de dado como {@code String}, {@code Integer}, {@code Double} e etc.
  */
-public class VectorGenerics<T> {
-  private T[] elements;
+public class VectorObject {
+  private Object[] elements;
   private int size;
 
-  /**
-   * Declarando um construtor que faz o casting de {@code Object} para o tipo generics {@code T}.
-   */
-  public VectorGenerics(int capacity) {
-    if (capacity < 0) {
-      throw new IllegalArgumentException(STR."Capacidade invalida!\{capacity}");
-    }
-    this.elements = (T[]) new Object[capacity];
+  public VectorObject(int capacity) {
+    this.elements = new Object[capacity];
     this.size = 0;
   }
 
-  public void toAddMethodOne(T element) {
+  public void toAddMethodOne(Object element) {
     for (int i = 0; i < this.elements.length; i++) {
       if (this.elements[i] == null) {
         this.elements[i] = element;
@@ -30,7 +24,7 @@ public class VectorGenerics<T> {
     }
   }
 
-  public void toAddMethodTwo(T element) throws Exception {
+  public void toAddMethodTwo(Object element) throws Exception {
     if (this.size < this.elements.length) {
       this.elements[this.size] = element;
       this.size++;
@@ -39,7 +33,7 @@ public class VectorGenerics<T> {
     }
   }
 
-  public boolean toAddMethodThree(T element) {
+  public boolean toAddMethodThree(Object element) {
     if (this.size < this.elements.length) {
       this.elements[this.size] = element;
       this.size++;
@@ -52,14 +46,14 @@ public class VectorGenerics<T> {
     return size;
   }
 
-  public T getElement(int index) throws Exception {
+  public Object getElement(int index) throws Exception {
     if (!(index >= 0 && index < this.size)) {
       throw new IllegalArgumentException("Index invalido!");
     }
     return this.elements[index];
   }
 
-  public int contains(T element) {
+  public int contains(Object element) {
     for (int i = 0; i < this.size; i++) {
       if (this.elements[i].equals(element)) {
         return i;
@@ -68,14 +62,14 @@ public class VectorGenerics<T> {
     return -1;
   }
 
-  public void toAddMethodFour(T element, int index) throws Exception {
+  public void toAddMethodFour(Object element, int index) throws Exception {
     if (this.elements[index] != null) {
       throw new IllegalArgumentException("Index já preenchido!");
     }
     this.elements[index] = element;
   }
 
-  public void toAddMethodFive(T element, int index) throws IllegalArgumentException {
+  public void toAddMethodFive(Object element, int index) throws IllegalArgumentException {
     if (!(index >= 0 && index < this.size)) {
       throw new IllegalArgumentException("Index invalido!");
     }
@@ -88,13 +82,13 @@ public class VectorGenerics<T> {
 
   private void resize() {
     if (this.size == this.elements.length) {
-      T[] newElements = (T[]) new Object[this.elements.length * 2 + 1];
+      Object[] newElements = new Object[this.elements.length * 2 + 1];
       System.arraycopy(this.elements, 0, newElements, 0, this.size);
       this.elements = newElements;
     }
   }
 
-  public void toAddMethodSix(T element, int index) throws Exception {
+  public void toAddMethodSix(Object element, int index) throws Exception {
     this.resize();
     if (this.elements[index] != null) {
       throw new IllegalArgumentException("Index já preenchido!");
@@ -104,7 +98,7 @@ public class VectorGenerics<T> {
   }
 
   public void removeElement(int index) throws IllegalArgumentException {
-    if (index < 0 && index > this.size) {
+    if (!(index >= 0 && index < this.size)) {
       throw new IllegalArgumentException("Index invalido!");
     }
 

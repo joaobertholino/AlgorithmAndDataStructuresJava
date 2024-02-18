@@ -1,21 +1,27 @@
-package com.joaobertholino.vector;
+package com.joaobertholino.vectorsandarrays.vector;
 
 import java.util.Arrays;
 
 /**
- * Declarando uma classe que instancia um vetor do tipo {@code Object}, sendo possivel a declaração de vetores de
- * qualquer tipo de dado como {@code String}, {@code Integer}, {@code Double} e etc.
+ * Declarando um classe que instancia um vetor cujo o mesmo terá seu tipo dinamicamente inferido por meio do
+ * operador {@code Diamond}.
  */
-public class VectorObject {
-  private Object[] elements;
+public class VectorGenerics<T> {
+  private T[] elements;
   private int size;
 
-  public VectorObject(int capacity) {
-    this.elements = new Object[capacity];
+  /**
+   * Declarando um construtor que faz o casting de {@code Object} para o tipo generics {@code T}.
+   */
+  public VectorGenerics(int capacity) {
+    if (capacity < 0) {
+      throw new IllegalArgumentException(STR."Capacidade invalida!\{capacity}");
+    }
+    this.elements = (T[]) new Object[capacity];
     this.size = 0;
   }
 
-  public void toAddMethodOne(Object element) {
+  public void toAddMethodOne(T element) {
     for (int i = 0; i < this.elements.length; i++) {
       if (this.elements[i] == null) {
         this.elements[i] = element;
@@ -24,7 +30,7 @@ public class VectorObject {
     }
   }
 
-  public void toAddMethodTwo(Object element) throws Exception {
+  public void toAddMethodTwo(T element) throws Exception {
     if (this.size < this.elements.length) {
       this.elements[this.size] = element;
       this.size++;
@@ -33,7 +39,7 @@ public class VectorObject {
     }
   }
 
-  public boolean toAddMethodThree(Object element) {
+  public boolean toAddMethodThree(T element) {
     if (this.size < this.elements.length) {
       this.elements[this.size] = element;
       this.size++;
@@ -46,14 +52,14 @@ public class VectorObject {
     return size;
   }
 
-  public Object getElement(int index) throws Exception {
+  public T getElement(int index) throws Exception {
     if (!(index >= 0 && index < this.size)) {
       throw new IllegalArgumentException("Index invalido!");
     }
     return this.elements[index];
   }
 
-  public int contains(Object element) {
+  public int contains(T element) {
     for (int i = 0; i < this.size; i++) {
       if (this.elements[i].equals(element)) {
         return i;
@@ -62,14 +68,14 @@ public class VectorObject {
     return -1;
   }
 
-  public void toAddMethodFour(Object element, int index) throws Exception {
+  public void toAddMethodFour(T element, int index) throws Exception {
     if (this.elements[index] != null) {
       throw new IllegalArgumentException("Index já preenchido!");
     }
     this.elements[index] = element;
   }
 
-  public void toAddMethodFive(Object element, int index) throws IllegalArgumentException {
+  public void toAddMethodFive(T element, int index) throws IllegalArgumentException {
     if (!(index >= 0 && index < this.size)) {
       throw new IllegalArgumentException("Index invalido!");
     }
@@ -82,13 +88,13 @@ public class VectorObject {
 
   private void resize() {
     if (this.size == this.elements.length) {
-      Object[] newElements = new Object[this.elements.length * 2 + 1];
+      T[] newElements = (T[]) new Object[this.elements.length * 2 + 1];
       System.arraycopy(this.elements, 0, newElements, 0, this.size);
       this.elements = newElements;
     }
   }
 
-  public void toAddMethodSix(Object element, int index) throws Exception {
+  public void toAddMethodSix(T element, int index) throws Exception {
     this.resize();
     if (this.elements[index] != null) {
       throw new IllegalArgumentException("Index já preenchido!");
@@ -98,7 +104,7 @@ public class VectorObject {
   }
 
   public void removeElement(int index) throws IllegalArgumentException {
-    if (!(index >= 0 && index < this.size)) {
+    if (index < 0 && index > this.size) {
       throw new IllegalArgumentException("Index invalido!");
     }
 
@@ -111,6 +117,6 @@ public class VectorObject {
 
   @Override
   public String toString() {
-    return Arrays.toString(elements);
+    return STR."\{Arrays.toString(elements)} - Size: \{this.size}";
   }
 }
