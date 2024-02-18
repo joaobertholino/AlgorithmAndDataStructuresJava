@@ -2,14 +2,14 @@ package com.joaobertholino.vectorsandarrays.exercises.contactex.vector;
 
 public class Contact {
   private String name;
-  private String number;
+  private String fone;
   private String email;
 
   public Contact() {}
 
-  public Contact(String name, String number, String email) {
+  public Contact(String name, String fone, String email) {
     this.name = name;
-    this.number = number;
+    this.fone = fone;
     this.email = email;
   }
 
@@ -21,12 +21,12 @@ public class Contact {
     this.name = name;
   }
 
-  public String getNumber() {
-    return number;
+  public String getFone() {
+    return fone;
   }
 
-  public void setNumber(String number) {
-    this.number = number;
+  public void setFone(String fone) {
+    this.fone = fone;
   }
 
   public String getEmail() {
@@ -39,6 +39,6 @@ public class Contact {
 
   @Override
   public String toString() {
-    return STR."Contact{name='\{name}\{'\''}, number='\{number}\{'\''}, email='\{email}\{'\''}\{'}'}";
+    return STR."Contact{name='\{name}\{'\''}, number='\{fone}\{'\''}, email='\{email}\{'\''}\{'}'}";
   }
 }
