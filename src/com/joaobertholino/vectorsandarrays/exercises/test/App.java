@@ -1,4 +1,4 @@
-package com.joaobertholino.vectorsandarrays.exercises.tests;
+package com.joaobertholino.vectorsandarrays.exercises.test;
 
 import com.joaobertholino.vectorsandarrays.exercises.Vector.Vector;
 

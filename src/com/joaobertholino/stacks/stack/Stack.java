@@ -9,8 +9,8 @@ import java.util.Arrays;
  * LIFO: Last in First out: Sempre o ultimo a entrar é o primeiro a sair.
  */
 public class Stack<T> {
-  private T[] elements;
-  private int size;
+  private final T[] elements;
+  private final int size;
 
   public Stack(int capacity) {
     this.elements = (T[]) new Object[capacity];
