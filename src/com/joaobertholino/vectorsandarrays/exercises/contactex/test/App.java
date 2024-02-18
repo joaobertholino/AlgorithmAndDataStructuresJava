@@ -1,5 +1,7 @@
 package com.joaobertholino.vectorsandarrays.exercises.contactex.test;
 
+// TODO: Implementar a logica referente a opção 3.
+// TODO: https://youtu.be/eUKloM_EUyg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi&t=1653
 import com.joaobertholino.vectorsandarrays.exercises.contactex.vector.Contact;
 import com.joaobertholino.vectorsandarrays.vector.VectorGenerics;
 
@@ -24,7 +26,9 @@ public class App {
           toAddContactFinal(scan, contactVector);
           break;
         case 2:
-
+//          Chamando o método toAddContactWithPosition passando como argumento o objeto
+//          Scanner e o vetor de contatos.
+          toAddContactWithPosition(scan, contactVector);
           break;
         default:
           break;
@@ -59,8 +63,21 @@ public class App {
     System.out.println(contact);
   }
 
-//  TODO: https://youtu.be/eUKloM_EUyg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi&t=1475
-//  TODO: Implementando logica referente a opção 2.
+  /**
+   * Declarando um método que recebe um objeto {@code Scanner} e um vetor de contatos onde, após imprimir a primeira
+   * linha, utiliza do método {@code readInfoOne} passando uma mensagem e o objeto {@code Scanner} como argumento
+   * ao qual ira retornar os dados necessarios e atribuir-los as seguintes variaveis: {@code name}, {@code fone}
+   * e {@code email}, em seguida, ira instanciar um novo contato passando como argumento essas variaveis.
+   * <p>
+   * Em seguida, utilizando o método {@code readInfoTwo} passando como argumento uma mensagem e o objeto {@code Scanner}
+   * ira retornar o indice a qual esse novo contato deve ser adicionado, atribuindo a variavel {@code position}.
+   * <p>
+   * Por fim, é declarado um bloco {@code try} onde, utilizando o método {@code toAddMethodSix}, será adicionado ao
+   * vetor passando como argumento o objeto {@code contact} e a variavel {@code position}.
+   * <p>
+   * Caso sea lançada uma exceção ao executar o bloco {@code try}, sera executado o bloco {@code catch}, onde imprimira
+   * uma mensagem indicando o erro.
+   */
   private static void toAddContactWithPosition(Scanner scan, VectorGenerics<Contact> contactVector){
     System.out.println("Criando um contato, entre com as informações:");
     String name = readInfoOne("Entre com o nome:", scan);
@@ -68,9 +85,15 @@ public class App {
     String email = readInfoOne("Entre com o email:", scan);
 
     Contact contact = new Contact(name, fone, email);
-    contactVector.toAddMethodThree(contact);
-    System.out.println("Contato adicionado com sucesso!");
-    System.out.println(contact);
+    int position = readInfoTwo("Entre com a posição a inserir o contato", scan);
+
+    try {
+      contactVector.toAddMethodSix(contact, position);
+      System.out.println("Contato adicionado com sucesso!");
+      System.out.println(contact);
+    } catch (Exception e){
+      System.out.println("Posição invalida, contato não adicionado!");
+    }
   }
 
   /**
@@ -79,15 +102,41 @@ public class App {
    */
   private static String readInfoOne(String message, Scanner scan){
     System.out.println(message);
-    String input = scan.nextLine();
-    return input;
+    return scan.nextLine();
   }
 
+  /**
+   * Declarando um método que recebe uma mensagem e um objeto {@code Scanner} como argumento, junto a uma variavel
+   * chamada {@code inputValid} inicializada com o valor de {@code false} e outra variavel chamada {@code inputIndex}
+   * inicializada com o valor de {@code 0}.
+   * <p>
+   * Após isso, é declarado um loop {@code while} que será executado enquanto a variavel {@code inputValid} for
+   * {@code false}, dentro do bloco {@code while} é declarado um bloco {@code try} onde após imprimir uma mensagem,
+   * executa o método {@code scan.nextInt}, onde {@code scan} é o objeto {@code Scanner} passado como argumento e sendo
+   * atribuido a variavel {@code inputIndex}.
+   * <p>
+   * Caso não lance uma exceção, ira reatribuir a variavel {@code inputValid} para {@code true}, assim saindo do loop
+   * {@code while} e retornando o valor da variavel {@code inputIndex}.
+   * <p>
+   * Caso seja lançada uma exceção, a variavel {@code inputValid} continua com seu valor de {@code false} e o bloco
+   * {@code catch} passa a ser executado imprimindo uma mensagem indicando o erro, em seguida, executando novamente o
+   * loop {@code while}.
+   */
   private static int readInfoTwo(String message, Scanner scan){
-    System.out.println(message);
-    String input = scan.nextLine();
-    int parseInput = Integer.parseInt(input);
-    return parseInput;
+    boolean inputValid = false;
+    int inputIndex = 0;
+
+    while (!inputValid){
+      try{
+        System.out.println(message);
+        String input = scan.nextLine();
+        inputIndex = Integer.parseInt(input);
+        inputValid = true;
+      } catch (Exception e){
+        System.out.println("Entrada invalida, digite novamente!");
+      }
+    }
+    return inputIndex;
   }
 
   /**
