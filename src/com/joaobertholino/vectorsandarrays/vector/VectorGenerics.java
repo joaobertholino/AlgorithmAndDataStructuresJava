@@ -68,6 +68,13 @@ public class VectorGenerics<T> {
     return -1;
   }
 
+  public boolean containsIndex(int index) throws Exception{
+    if (this.elements[index] != null){
+      return true;
+    }
+    throw new Exception();
+  }
+
   public void toAddMethodFour(T element, int index) throws Exception {
     if (this.elements[index] != null) {
       throw new IllegalArgumentException("Index já preenchido!");

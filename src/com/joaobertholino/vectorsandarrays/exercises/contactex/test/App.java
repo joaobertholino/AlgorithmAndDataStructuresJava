@@ -1,6 +1,5 @@
 package com.joaobertholino.vectorsandarrays.exercises.contactex.test;
 
-// TODO: Melhorar a documentação da logica referante a opção 3.
 // TODO: https://youtu.be/eUKloM_EUyg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi&t=1748
 import com.joaobertholino.vectorsandarrays.exercises.contactex.vector.Contact;
 import com.joaobertholino.vectorsandarrays.vector.VectorGenerics;
@@ -87,7 +86,7 @@ public class App {
     String email = readInfoOne("Entre com o email:", scan);
 
     Contact contact = new Contact(name, fone, email);
-    int position = readInfoTwo("Entre com a posição a inserir o contato", scan);
+    int position = readInfoTwo("Entre com a posição a inserir o contato", scan, contactVector);
 
     try {
       contactVector.toAddMethodSix(contact, position);
@@ -101,16 +100,16 @@ public class App {
   /**
    * Declarando um método que recebe um objeto {@code Scanner} e um vetor de contatos como argumento, onde apos
    * executar o método {@code readInfoTwo} passando ao mesmo uma menssagem e um objeto {@code Scanner} como
-   * argumento, atribuindo o seu retorno em {@code int} a variavel {@code position}, declara um bloco {@code try}
-   * onde será executado o método {@code getElement} passando como argumento a variavel {@code position} e atribuindo
-   * o valor a variavel {@code contact}.
+   * argumento, atribuindo o seu retorno o tipo {@code int} a variavel {@code position}, é declarado um bloco
+   * {@code try} onde será executado o método {@code getElement} passando como argumento a variavel {@code position}
+   * e atribuindo o valor a variavel {@code contact}.
    * <p>
-   * Apos isso, ainda no bloco {@code try}, é imprimido o valor da variavel {@code contact}, onde caso não tenha sido
-   * bem sucedida a obtenção desse valor com o método {@code getElement}, sera executado o bloco {@code catch},
-   * lançando uma exceção junto a uma menssagem.
+   * Apos isso, ainda no bloco {@code try}, é imprimido o valor da variavel {@code contact} junto a uma mensagem,
+   * onde caso não tenha sido bem sucedida a obtenção desse valor com o método {@code getElement}, sera executado
+   * o bloco {@code catch}, lançando uma exceção junto a uma menssagem.
    */
   private static void getContactIndex(Scanner scan, VectorGenerics<Contact> contactVector) throws Exception {
-    int position = readInfoTwo("Entre com a posição a ser verificada:", scan);
+    int position = readInfoTwo("Entre com a posição a ser verificada:", scan, contactVector);
     try{
       Contact contact = contactVector.getElement(position);
       System.out.println("Seguem dados do contato:");
@@ -146,7 +145,7 @@ public class App {
    * {@code catch} passa a ser executado imprimindo uma mensagem indicando o erro, em seguida, executando novamente o
    * loop {@code while}.
    */
-  private static int readInfoTwo(String message, Scanner scan) {
+  private static int readInfoTwo(String message, Scanner scan, VectorGenerics<Contact> contactVector) {
     boolean inputValid = false;
     int inputIndex = 0;
 
@@ -155,7 +154,7 @@ public class App {
         System.out.println(message);
         String input = scan.nextLine();
         inputIndex = Integer.parseInt(input);
-        inputValid = true;
+        if (contactVector.containsIndex(inputIndex)) inputValid = true;
       } catch (Exception e) {
         System.out.println("Entrada invalida, digite novamente!");
       }
