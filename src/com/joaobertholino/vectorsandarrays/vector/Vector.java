@@ -3,7 +3,7 @@ package com.joaobertholino.vectorsandarrays.vector;
 import java.util.Arrays;
 
 /**
- * Declarando uma classe Vector onde a cada instancia, por meio de um construtor, cria
+ * Declarando uma classe vector onde a cada instancia, por meio de um construtor, cria
  * um novo vetor de tamanho referente ao valor passado como argumento
  */
 public class Vector {
@@ -123,7 +123,7 @@ public class Vector {
    * Declarando método privado que se o {@code this.size} for igual a {@code this.elements.length}, cria um novo
    * vetor de tamanho maior e com os mesmos elementos do vetor original.
    * <p>
-   * Sendo esse método utilizado apenas internamente a classe {@code Vector}.
+   * Sendo esse método utilizado apenas internamente a classe {@code vector}.
    */
   private void resize() {
     if (this.size == this.elements.length) {

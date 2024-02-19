@@ -1,6 +1,6 @@
 package com.joaobertholino.vectorsandarrays.exercises.test;
 
-import com.joaobertholino.vectorsandarrays.exercises.Vector.Vector;
+import com.joaobertholino.vectorsandarrays.exercises.vector.Vector;
 
 public class App {
   public static void main(String[] args) throws Exception {

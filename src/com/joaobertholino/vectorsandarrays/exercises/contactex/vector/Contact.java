@@ -5,7 +5,8 @@ public class Contact {
   private String fone;
   private String email;
 
-  public Contact() {}
+  public Contact() {
+  }
 
   public Contact(String name, String fone, String email) {
     this.name = name;

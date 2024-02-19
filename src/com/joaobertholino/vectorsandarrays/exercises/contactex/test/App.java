@@ -2,6 +2,7 @@ package com.joaobertholino.vectorsandarrays.exercises.contactex.test;
 
 // TODO: Implementar a logica referente a opção 3.
 // TODO: https://youtu.be/eUKloM_EUyg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi&t=1653
+
 import com.joaobertholino.vectorsandarrays.exercises.contactex.vector.Contact;
 import com.joaobertholino.vectorsandarrays.vector.VectorGenerics;
 
@@ -51,7 +52,7 @@ public class App {
    * <p>
    * Por fim, imprime uma mensagem indicando o sucesso da operação junto ao contato adicionado.
    */
-  private static void toAddContactFinal(Scanner scan, VectorGenerics<Contact> contactVector){
+  private static void toAddContactFinal(Scanner scan, VectorGenerics<Contact> contactVector) {
     System.out.println("Criando um contato, entre com as informações:");
     String name = readInfoOne("Entre com o nome:", scan);
     String fone = readInfoOne("Entre com o telefone:", scan);
@@ -78,7 +79,7 @@ public class App {
    * Caso sea lançada uma exceção ao executar o bloco {@code try}, sera executado o bloco {@code catch}, onde imprimira
    * uma mensagem indicando o erro.
    */
-  private static void toAddContactWithPosition(Scanner scan, VectorGenerics<Contact> contactVector){
+  private static void toAddContactWithPosition(Scanner scan, VectorGenerics<Contact> contactVector) {
     System.out.println("Criando um contato, entre com as informações:");
     String name = readInfoOne("Entre com o nome:", scan);
     String fone = readInfoOne("Entre com o telefone:", scan);
@@ -91,7 +92,7 @@ public class App {
       contactVector.toAddMethodSix(contact, position);
       System.out.println("Contato adicionado com sucesso!");
       System.out.println(contact);
-    } catch (Exception e){
+    } catch (Exception e) {
       System.out.println("Posição invalida, contato não adicionado!");
     }
   }
@@ -100,7 +101,7 @@ public class App {
    * Declarando método que imprime uma menssagem e captura os dados que o usuario inserir
    * e retona esses dados em {@code String}.
    */
-  private static String readInfoOne(String message, Scanner scan){
+  private static String readInfoOne(String message, Scanner scan) {
     System.out.println(message);
     return scan.nextLine();
   }
@@ -122,17 +123,17 @@ public class App {
    * {@code catch} passa a ser executado imprimindo uma mensagem indicando o erro, em seguida, executando novamente o
    * loop {@code while}.
    */
-  private static int readInfoTwo(String message, Scanner scan){
+  private static int readInfoTwo(String message, Scanner scan) {
     boolean inputValid = false;
     int inputIndex = 0;
 
-    while (!inputValid){
-      try{
+    while (!inputValid) {
+      try {
         System.out.println(message);
         String input = scan.nextLine();
         inputIndex = Integer.parseInt(input);
         inputValid = true;
-      } catch (Exception e){
+      } catch (Exception e) {
         System.out.println("Entrada invalida, digite novamente!");
       }
     }

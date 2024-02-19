@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class AppOne {
   public static void main(String[] args) throws Exception {
-//    Class Vector
+//    Class vector
     Vector myPrimaryVector = new Vector(2);
     myPrimaryVector.toAddMethodOne("Elemento um!");
     myPrimaryVector.toAddMethodOne("Elemento dois!");
