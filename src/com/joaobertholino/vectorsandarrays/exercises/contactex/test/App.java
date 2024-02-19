@@ -1,8 +1,7 @@
 package com.joaobertholino.vectorsandarrays.exercises.contactex.test;
 
-// TODO: Implementar a logica referente a opção 3.
-// TODO: https://youtu.be/eUKloM_EUyg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi&t=1653
-
+// TODO: Melhorar a documentação da logica referante a opção 3.
+// TODO: https://youtu.be/eUKloM_EUyg?list=PLGxZ4Rq3BOBrgumpzz-l8kFMw2DLERdxi&t=1748
 import com.joaobertholino.vectorsandarrays.exercises.contactex.vector.Contact;
 import com.joaobertholino.vectorsandarrays.vector.VectorGenerics;
 
@@ -22,14 +21,16 @@ public class App {
       option = getOption(scan);
       switch (option) {
         case 1:
-//          Chamando o método toAddContactFinal passando como argumento o objeto
-//          Scanner e o vetor de contatos.
+//          Chamando o método toAddContactFinal passando como argumento o objeto Scanner e o vetor de contatos.
           toAddContactFinal(scan, contactVector);
           break;
         case 2:
-//          Chamando o método toAddContactWithPosition passando como argumento o objeto
-//          Scanner e o vetor de contatos.
+//          Chamando o método toAddContactWithPosition passando como argumento o objeto Scanner e o vetor de contatos.
           toAddContactWithPosition(scan, contactVector);
+          break;
+        case 3:
+//          Chamando o método getContactIndex passando como argumento o objeto Scanner e o vetor de contatos.
+          getContactIndex(scan, contactVector);
           break;
         default:
           break;
@@ -94,6 +95,28 @@ public class App {
       System.out.println(contact);
     } catch (Exception e) {
       System.out.println("Posição invalida, contato não adicionado!");
+    }
+  }
+
+  /**
+   * Declarando um método que recebe um objeto {@code Scanner} e um vetor de contatos como argumento, onde apos
+   * executar o método {@code readInfoTwo} passando ao mesmo uma menssagem e um objeto {@code Scanner} como
+   * argumento, atribuindo o seu retorno em {@code int} a variavel {@code position}, declara um bloco {@code try}
+   * onde será executado o método {@code getElement} passando como argumento a variavel {@code position} e atribuindo
+   * o valor a variavel {@code contact}.
+   * <p>
+   * Apos isso, ainda no bloco {@code try}, é imprimido o valor da variavel {@code contact}, onde caso não tenha sido
+   * bem sucedida a obtenção desse valor com o método {@code getElement}, sera executado o bloco {@code catch},
+   * lançando uma exceção junto a uma menssagem.
+   */
+  private static void getContactIndex(Scanner scan, VectorGenerics<Contact> contactVector) throws Exception {
+    int position = readInfoTwo("Entre com a posição a ser verificada:", scan);
+    try{
+      Contact contact = contactVector.getElement(position);
+      System.out.println("Seguem dados do contato:");
+      System.out.println(contact);
+    } catch (Exception e) {
+      throw new Exception("Indice invalido, insira novamente:");
     }
   }
 
